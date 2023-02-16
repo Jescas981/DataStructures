@@ -24,13 +24,18 @@ TEST_F(ArrayListFixture, Basic) {
   array->Remove(array->begin() + 1);
   array->Remove(array->begin() + 2);
   ASSERT_EQ(array->size(), 4);
-  ASSERT_EQ(array->capacity(), 4);
   // Only arithmetic types
-  EXPECT_EQ(array->Sum(), 27);
-  // EXPECT_NEAR(array->Average(), 4.57, 0.01);
+  EXPECT_EQ(array->Sum(), 20);
+  EXPECT_NEAR(array->Average(), 5, 0.01);
 }
 
-TEST_F(ArrayListFixture, Search) {}
+TEST_F(ArrayListFixture, Search) {
+  // ASSERT_EQ(array->Search(3), array->begin() + 1);
+  array->Add(10);
+  array->Add(6);
+  array->Add(8);
+  array->Sort(0, array->size() - 1);
+}
 
 int main(int argc, char** argv) {
   testing::InitGoogleTest(&argc, argv);

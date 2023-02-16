@@ -30,6 +30,10 @@ class ArrayList {
   template <typename... Arsg>
   void Append(Arsg&&... args);
   void Remove(iterator it);
+  iterator LinearSearch(T item) const;
+  iterator BinarySearch(T item) const;
+  iterator Search(T item);
+  void Sort(size_t l, size_t h);
   // Arithmetic related
   template <typename = std::enable_if_t<std::is_arithmetic_v<T>, T>>
   inline T Sum() const {
