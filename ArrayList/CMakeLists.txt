@@ -1,9 +1,7 @@
-cmake_minimum_required(VERSION 3.15)
-project(ArrayList)
-
+# Libraries
 add_library(array_list INTERFACE
-    "include/adt/array_list.hpp"
-    "include/adt/array_list.ipp"
+    include/adt/array_list.hpp
+    include/adt/array_list.ipp
 )
 
 target_include_directories(array_list INTERFACE
@@ -11,5 +9,13 @@ target_include_directories(array_list INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-enable_testing()
-add_subdirectory(test)
+# Executables
+
+# Testing
+add_executable(array_list_test EXCLUDE_FROM_ALL test/array_list.cpp)
+target_link_libraries(array_list_test PRIVATE array_list GTest::gtest GTest::gtest_main)
+
+# Install header files
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+    DESTINATION include
+)
